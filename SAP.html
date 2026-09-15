@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#082b45" />
+  <title>SAP Student Portal | Sign in</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="login-shell">
+    <section class="brand-panel" aria-label="SAP Student Portal introduction">
+      <div class="brand-panel__texture"></div>
+      <header class="brand-header">
+        <a class="sap-logo" href="#" aria-label="SAP home">SAP<span class="sap-logo__dot">®</span></a>
+        <span class="brand-header__rule"></span>
+        <span class="brand-header__label">Student portal</span>
+      </header>
+
+      <div class="brand-panel__content">
+        <p class="eyebrow"><span></span> Secure access · 2026</p>
+        <h1>Your academic<br /><em>command center.</em></h1>
+        <p class="brand-panel__copy">One calm place for your courses, results, payments, and everything that keeps your semester moving.</p>
+        <div class="quick-links" aria-label="Portal highlights">
+          <div class="quick-link"><i data-lucide="shield-check"></i><span>Protected student access</span></div>
+          <div class="quick-link"><i data-lucide="clock-3"></i><span>Available around the clock</span></div>
+        </div>
+      </div>
+
+      <footer class="brand-panel__footer">
+        <span>© 2026 SAP SE</span>
+        <span class="footer-status"><i data-lucide="circle-check"></i> Systems operational</span>
+      </footer>
+    </section>
+
+    <section class="form-panel" aria-labelledby="login-title">
+      <div class="form-panel__topline">
+        <span class="session-label"><i data-lucide="lock-keyhole"></i> Encrypted session</span>
+        <label class="language-picker" aria-label="Choose language">
+          <i data-lucide="globe-2"></i>
+          <select id="languageSelect">
+            <option value="en">EN · English</option>
+            <option value="de">DE · Deutsch</option>
+            <option value="fr">FR · Français</option>
+          </select>
+          <i data-lucide="chevron-down"></i>
+        </label>
+      </div>
+
+      <div class="login-card">
+        <div class="welcome-mark"><i data-lucide="sparkles"></i></div>
+        <p class="form-kicker">Welcome back</p>
+        <h2 id="login-title">Sign in to SAP</h2>
+        <p class="form-intro">Use your student credentials to continue to the portal.</p>
+
+        <form id="loginForm" novalidate>
+          <div class="field-group">
+            <label for="userId">User ID</label>
+            <div class="input-wrap">
+              <i data-lucide="circle-user-round"></i>
+              <input id="userId" name="userId" type="text" inputmode="numeric" autocomplete="username" placeholder="Enter your student ID" required />
+            </div>
+            <p class="field-error" id="userIdError" role="alert"></p>
+          </div>
+
+          <div class="field-group">
+            <div class="field-label-row">
+              <label for="password">Password</label>
+              <button class="text-button" type="button" data-action="forgot">Forgot password?</button>
+            </div>
+            <div class="input-wrap">
+              <i data-lucide="key-round"></i>
+              <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required />
+              <button class="input-action" type="button" data-action="toggle-password" aria-label="Show password" title="Show password"><i data-lucide="eye"></i></button>
+            </div>
+            <p class="field-error" id="passwordError" role="alert"></p>
+          </div>
+
+          <div class="form-options">
+            <label class="check-control"><input id="rememberMe" type="checkbox" /><span class="checkmark"><i data-lucide="check"></i></span><span>Remember this device</span></label>
+            <button class="help-button" type="button" data-action="help" aria-label="Get sign-in help" title="Get sign-in help"><i data-lucide="circle-help"></i></button>
+          </div>
+
+          <button class="submit-button" type="submit">
+            <span>Sign in</span><i data-lucide="arrow-up-right"></i>
+          </button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="divider"><span>or</span></div>
+        <button class="secondary-button" type="button" data-action="change-password"><i data-lucide="refresh-cw"></i> Change password</button>
+      </div>
+
+      <p class="support-note">Need assistance? <button class="text-button" type="button" data-action="support">Contact portal support</button></p>
+    </section>
+  </main>
+
+  <main class="dashboard-shell" id="dashboardShell" hidden>
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+      <div class="dashboard-brand">
+        <a class="sap-logo dashboard-logo" href="#" aria-label="SAP home">SAP<span class="sap-logo__dot">®</span></a>
+        <span class="dashboard-brand__label">Student portal</span>
+      </div>
+      <nav class="dashboard-nav" aria-label="Portal navigation">
+        <button class="dashboard-nav__item is-active" data-section="Dashboard"><i data-lucide="layout-dashboard"></i><span>Dashboard</span></button>
+        <button class="dashboard-nav__item" data-section="My Results"><i data-lucide="graduation-cap"></i><span>My Results</span></button>
+        <button class="dashboard-nav__item" data-section="Courses"><i data-lucide="book-open"></i><span>Courses</span></button>
+        <button class="dashboard-nav__item" data-section="Timetable"><i data-lucide="calendar-days"></i><span>Timetable</span></button>
+        <button class="dashboard-nav__item" data-section="Fee Voucher"><i data-lucide="receipt"></i><span>Fee Voucher</span></button>
+        <button class="dashboard-nav__item" data-section="Hostel"><i data-lucide="building-2"></i><span>Hostel</span></button>
+        <button class="dashboard-nav__item" data-section="Transcript"><i data-lucide="file-text"></i><span>Transcript</span></button>
+        <button class="dashboard-nav__item" data-section="Attendance"><i data-lucide="clipboard-check"></i><span>Attendance</span></button>
+        <button class="dashboard-nav__item" data-section="Complaints"><i data-lucide="message-square-plus"></i><span>Complaints</span></button>
+      </nav>
+      <div class="dashboard-sidebar__footer">
+        <button class="dashboard-nav__item" data-section="Settings"><i data-lucide="settings"></i><span>Settings</span></button>
+        <button class="dashboard-nav__item" data-action="logout"><i data-lucide="log-out"></i><span>Log out</span></button>
+        <button class="dashboard-collapse" id="dashboardCollapse"><i data-lucide="panel-left-close"></i><span>Collapse menu</span></button>
+      </div>
+    </aside>
+
+    <div class="dashboard-main">
+      <header class="dashboard-topbar">
+        <button class="dashboard-menu" id="dashboardMenu" aria-label="Open navigation"><i data-lucide="menu"></i></button>
+        <label class="dashboard-search"><i data-lucide="search"></i><input id="serviceSearch" type="search" placeholder="Search services and courses" /></label>
+        <div class="dashboard-actions">
+          <div class="dashboard-dropdown-wrap">
+            <button class="dashboard-icon-button" id="notificationButton" aria-label="Open notifications"><i data-lucide="bell"></i><span class="notification-dot"></span></button>
+            <div class="dashboard-dropdown notification-panel" id="notificationPanel">
+              <strong>Notifications</strong>
+              <button data-action="notification"><b>Registration is open</b><small>Course registration closes in 3 days.</small></button>
+              <button data-action="notification"><b>Fee voucher generated</b><small>Your Fall 2026 voucher is ready.</small></button>
+            </div>
+          </div>
+          <div class="dashboard-dropdown-wrap">
+            <button class="dashboard-profile" id="profileButton"><span class="dashboard-avatar">AR</span><span class="dashboard-profile__name">Abdul Razaque</span><i data-lucide="chevron-down"></i></button>
+            <div class="dashboard-dropdown profile-panel" id="profilePanel">
+              <strong>Abdul Razaque Kolachi</strong><small>ID 5000000147</small>
+              <button data-action="profile">My Profile</button>
+              <button data-action="settings">Settings</button>
+              <button data-action="logout">Log out</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="dashboard-content">
+        <div class="dashboard-hero">
+          <div><p class="dashboard-eyebrow">FALL 2026 · WEEK 7</p><h1>Good morning, Abdul.</h1><p>Here’s what’s happening with your academic journey today.</p></div>
+          <button class="dashboard-primary" data-action="register"><i data-lucide="sparkles"></i> Register for courses</button>
+        </div>
+        <div class="dashboard-stats">
+          <article><div class="dashboard-stat-icon blue"><i data-lucide="award"></i></div><p>Current GPA</p><strong>3.78</strong><small>Top 12% of cohort</small></article>
+          <article><div class="dashboard-stat-icon cyan"><i data-lucide="book-open"></i></div><p>Registered courses</p><strong>7</strong><small>Fall 2026 semester</small></article>
+          <article><div class="dashboard-stat-icon green"><i data-lucide="clipboard-check"></i></div><p>Attendance</p><strong>92%</strong><small>Above 85% requirement</small></article>
+          <article><div class="dashboard-stat-icon orange"><i data-lucide="calendar-clock"></i></div><p>Upcoming events</p><strong>4</strong><small>Next: Quiz · Tomorrow</small></article>
+        </div>
+        <div class="dashboard-section-heading"><div><p class="dashboard-eyebrow">YOUR TOOLS</p><h2>Student services</h2></div><span id="serviceCount">8 services</span></div>
+        <div class="service-grid" id="serviceGrid">
+          <button class="service-tile" data-service="Timetable"><span class="service-tile__icon blue"><i data-lucide="calendar-days"></i></span><b>Timetable</b><small>View your weekly class schedule</small><i data-lucide="arrow-up-right"></i></button>
+          <button class="service-tile" data-service="Fee Voucher"><span class="service-tile__icon purple"><i data-lucide="receipt"></i></span><b>Fee Voucher</b><small>Download and pay your dues</small><i data-lucide="arrow-up-right"></i></button>
+          <button class="service-tile" data-service="Hostel"><span class="service-tile__icon cyan"><i data-lucide="building-2"></i></span><b>Hostel</b><small>Room, mess and hostel services</small><i data-lucide="arrow-up-right"></i></button>
+          <button class="service-tile" data-service="Transcript"><span class="service-tile__icon blue"><i data-lucide="file-text"></i></span><b>Transcript</b><small>View your academic transcript</small><i data-lucide="arrow-up-right"></i></button>
+          <button class="service-tile" data-service="Transport"><span class="service-tile__icon green"><i data-lucide="bus"></i></span><b>Transport</b><small>Bus routes and seat booking</small><i data-lucide="arrow-up-right"></i></button>
+          <button class="service-tile" data-service="Exam Card"><span class="service-tile__icon purple"><i data-lucide="id-card"></i></span><b>Exam Card</b><small>Download your exam admit card</small><i data-lucide="arrow-up-right"></i></button>
+          <button class="service-tile" data-service="Student File"><span class="service-tile__icon cyan"><i data-lucide="folder-open"></i></span><b>Student File</b><small>Refunds, scholarships and requests</small><i data-lucide="arrow-up-right"></i></button>
+          <button class="service-tile" data-service="Course Registration"><span class="service-tile__icon blue"><i data-lucide="sparkles"></i></span><b>Course registration</b><small>Register for next semester</small><i data-lucide="arrow-up-right"></i></button>
+        </div>
+        <div class="dashboard-view" data-view="My Results"><div class="dashboard-page-heading"><p class="dashboard-eyebrow">ACADEMIC RECORD</p><h1>My Results</h1><p>Review your latest semester performance and grades.</p></div><div class="dashboard-detail-grid"><article><span>Fall 2026 GPA</span><strong>3.78</strong><small>Excellent standing</small></article><article><span>Completed credits</span><strong>84</strong><small>12 credits in progress</small></article><article><span>Latest result</span><strong>A-</strong><small>Artificial Intelligence</small></article></div></div>
+        <div class="dashboard-view" data-view="Courses"><div class="dashboard-page-heading"><p class="dashboard-eyebrow">COURSE REGISTRATION</p><h1>Register Subjects</h1><p>Choose subjects for your BS Artificial Intelligence degree.</p></div><div class="subject-list"><button class="subject-row"><span><b>Artificial Intelligence</b><small>BS AI · 3 credits · Core subject</small></span><strong>Register</strong></button><button class="subject-row"><span><b>Machine Learning</b><small>BS AI · 3 credits · Core subject</small></span><strong>Register</strong></button><button class="subject-row"><span><b>Data Structures and Algorithms</b><small>BS AI · 3 credits · Core subject</small></span><strong>Register</strong></button></div></div>
+        <div class="dashboard-view" data-view="Fee Voucher"><div class="dashboard-page-heading"><p class="dashboard-eyebrow">PAYMENTS</p><h1>Fee Voucher</h1><p>View your current semester dues and payment status.</p></div><div class="voucher-panel"><div><span>Fall 2026 semester voucher</span><strong>PKR 145,000</strong><small>Due date: 30 September 2026</small></div><button class="dashboard-primary"><i data-lucide="download"></i> Download voucher</button></div></div>
+        <div class="dashboard-view" data-view="Timetable"><div class="dashboard-page-heading"><p class="dashboard-eyebrow">WEEKLY SCHEDULE</p><h1>Timetable</h1><p>Your classes for Fall 2026, Week 7.</p></div><div class="schedule-list"><div><b>09:00</b><span>Artificial Intelligence <small>Room B-204 · Monday</small></span></div><div><b>11:00</b><span>Machine Learning <small>Lab 3 · Tuesday</small></span></div><div><b>14:00</b><span>Data Structures and Algorithms <small>Room A-110 · Wednesday</small></span></div></div></div>
+        <div class="dashboard-view" data-view="Hostel"><div class="dashboard-page-heading"><p class="dashboard-eyebrow">CAMPUS LIVING</p><h1>Hostel</h1><p>Room and residence services for your student accommodation.</p></div><div class="single-detail"><i data-lucide="building-2"></i><strong>Room A-204</strong><span>Block A · Semester residence active</span></div></div>
+        <div class="dashboard-view" data-view="Transcript"><div class="dashboard-page-heading"><p class="dashboard-eyebrow">ACADEMIC DOCUMENTS</p><h1>Transcript</h1><p>Access your official academic record.</p></div><div class="single-detail"><i data-lucide="file-text"></i><strong>Official transcript</strong><span>Updated after Fall 2026 Week 6</span><button class="dashboard-primary"><i data-lucide="download"></i> Download transcript</button></div></div>
+        <div class="dashboard-view" data-view="Attendance"><div class="dashboard-page-heading"><p class="dashboard-eyebrow">CLASS PARTICIPATION</p><h1>Attendance</h1><p>Track attendance across your registered subjects.</p></div><div class="dashboard-detail-grid"><article><span>Overall attendance</span><strong>92%</strong><small>Above 85% requirement</small></article><article><span>Best attendance</span><strong>98%</strong><small>Data Structures</small></article><article><span>Classes attended</span><strong>46/50</strong><small>Fall 2026</small></article></div></div>
+        <div class="dashboard-view" data-view="Settings"><div class="dashboard-page-heading"><p class="dashboard-eyebrow">PORTAL PREFERENCES</p><h1>Settings</h1><p>Manage your student portal preferences.</p></div><div class="single-detail"><i data-lucide="settings"></i><strong>Account settings</strong><span>Language: English · Notifications: Enabled</span></div></div>
+        <div class="dashboard-view" data-view="Complaints"><div class="dashboard-page-heading"><p class="dashboard-eyebrow">STUDENT SUPPORT</p><h1>Submit a Complaint</h1><p>Send an issue or request to the student support team.</p></div><div class="complaint-panel"><label>Subject<input type="text" placeholder="Enter complaint subject" /></label><label>Details<textarea rows="4" placeholder="Describe your issue"></textarea></label><button class="dashboard-primary"><i data-lucide="send"></i> Submit complaint</button></div></div>
+      </section>
+    </div>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"><i data-lucide="info"></i><span></span></div>
+</body>
+</html>
