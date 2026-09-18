@@ -26,6 +26,19 @@ body {
   font-family: "DM Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
+body.dashboard-active {
+  overflow: hidden;
+}
+body.login-active {
+  overflow: auto;
+}
+body.dashboard-active .login-shell,
+body.dashboard-active .dashboard-shell[hidden] {
+  display: none !important;
+}
+body:not(.dashboard-active) .dashboard-shell {
+  display: none !important;
+}
 button, input, select { font: inherit; }
 button, select { cursor: pointer; }
 button { border: 0; }
